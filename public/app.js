@@ -3,7 +3,7 @@ const form = document.getElementById("chatForm");
 const input = document.getElementById("message");
 const newChat = document.getElementById("newChat");
 
-let history = [];
+let messages = [];
 
 function addMessage(role, content) {
   const item = document.createElement("div");
@@ -35,7 +35,7 @@ form.addEventListener("submit", async (event) => {
 
   addMessage("user", text);
   input.value = "";
-  history.push({ role: "user", content: text });
+  messages.push({ role: "user", content: text });
 
   const loading = document.createElement("p");
   loading.textContent = "شفا AI در حال پاسخ‌گویی است...";
@@ -45,7 +45,7 @@ form.addEventListener("submit", async (event) => {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text, history })
+      body: JSON.stringify({ messages })
     });
 
     const data = await response.json();
@@ -56,17 +56,17 @@ form.addEventListener("submit", async (event) => {
     }
 
     addMessage("assistant", data.reply);
-    history.push({ role: "assistant", content: data.reply });
+    messages.push({ role: "assistant", content: data.reply });
 
   } catch (error) {
     loading.remove();
-    addMessage("assistant", "ارتباط با سرور برقرار نشد. لطفاً بعداً دوباره تلاش کنید.");
+    addMessage("assistant", error.message || "ارتباط با سرور برقرار نشد.");
     console.error(error);
   }
 });
 
 newChat.addEventListener("click", () => {
-  history = [];
+  messages = [];
   chat.innerHTML = `
     <section class="welcome">
       <h1>به شفا AI خوش آمدید</h1>
