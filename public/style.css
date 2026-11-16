@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: #f1f7f8;
+  color: #24343a;
+}
+
+.app {
+  max-width: 850px;
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.header {
+  background: #087f8c;
+  color: white;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  background: #087f8c;
+  color: white;
+  padding: 12px 18px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.header button {
+  background: white;
+  color: #087f8c;
+}
+
+.chat {
+  flex: 1;
+  padding: 25px 18px;
+}
+
+.welcome {
+  text-align: center;
+  margin-top: 100px;
+  line-height: 2;
+}
+
+.welcome h1 {
+  color: #087f8c;
+}
+
+.composer {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+textarea {
+  flex: 1;
+  resize: none;
+  border: 1px solid #ccd9dc;
+  border-radius: 12px;
+  padding: 13px;
+  font-family: inherit;
+  font-size: 15px;
+  outline-color: #087f8c;
+}
+
+footer {
+  text-align: center;
+  padding: 12px;
+  color: #89999c;
+  font-size: 12px;
+}
